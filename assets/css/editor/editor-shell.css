@@ -1,0 +1,1542 @@
+body.cdx-stw-editor-mode {
+  overflow: hidden;
+}
+
+body.cdx-stw-editor-mode #wpadminbar,
+body.cdx-stw-editor-mode #adminmenumain,
+body.cdx-stw-editor-mode #wpfooter {
+  display: none !important;
+}
+
+body.cdx-stw-editor-mode #wpcontent,
+body.cdx-stw-editor-mode #wpbody {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.cdx-stw-editor-mode #wpbody-content {
+  padding: 0 !important;
+}
+
+.cdx-stw-editor-shell {
+  --cdx-stw-nav-width: 252px;
+  --cdx-stw-inspector-width: 320px;
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  margin: 0 !important;
+  overflow: hidden;
+  color: #182235;
+  background: #e9eef5;
+  font:
+    14px/1.5 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.cdx-stw-editor-shell.is-navigator-collapsed {
+  --cdx-stw-nav-width: 0px;
+}
+
+.cdx-stw-editor-shell.is-inspector-collapsed {
+  --cdx-stw-inspector-width: 0px;
+}
+
+.cdx-stw-editor-shell.is-navigator-collapsed .cdx-stw-editor-navigator,
+.cdx-stw-editor-shell.is-inspector-collapsed .cdx-stw-editor-panel {
+  display: none;
+}
+
+.cdx-stw-editor-topbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 72px;
+  padding: 10px 18px;
+  border-bottom: 1px solid #344155;
+  color: #f8fafc;
+  background: #111c2d;
+}
+
+.cdx-stw-editor-brand {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 155px;
+}
+
+.cdx-stw-editor-brand strong {
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+
+.cdx-stw-editor-brand span {
+  color: #bac8dc;
+  font-size: 12px;
+  max-width: 190px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cdx-stw-editor-actions,
+.cdx-stw-editor-viewports {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.cdx-stw-editor-actions {
+  flex: 1 1 auto;
+  min-width: 0;
+  justify-content: flex-end;
+  overflow-x: auto;
+  padding: 3px 0;
+  scrollbar-width: thin;
+}
+
+.cdx-stw-editor-actions > * {
+  flex-shrink: 0;
+}
+
+.cdx-stw-editor-topbar .button {
+  min-height: 34px;
+  margin: 0;
+  border-color: #465773;
+  border-radius: 6px;
+  background: #233249;
+  color: #f8fafc;
+  font-weight: 500;
+}
+
+.cdx-stw-editor-topbar .button:hover,
+.cdx-stw-editor-topbar .button:focus-visible,
+.cdx-stw-editor-panel-toggle[aria-expanded="true"] {
+  border-color: #7baef7;
+  background: #344b6a;
+  color: #fff;
+}
+
+.cdx-stw-editor-topbar .button.button-primary {
+  background: #2563eb;
+  border-color: #3b82f6;
+  color: #fff;
+}
+
+.cdx-stw-editor-topbar .button:disabled {
+  opacity: 0.5;
+  color: #c7d0de;
+}
+
+.cdx-stw-editor-topbar select {
+  min-height: 34px;
+  max-width: 170px;
+  border-color: #52647f;
+  border-radius: 6px;
+  background: #233249;
+  color: #fff;
+}
+
+.cdx-stw-editor-viewports .is-active {
+  border-color: #7baef7;
+  background: #344b6a;
+  color: #fff;
+}
+
+.cdx-stw-editor-workspace {
+  position: relative;
+  display: grid;
+  flex: 1 1 auto;
+  min-height: 0;
+  grid-template-columns: var(--cdx-stw-nav-width) minmax(0, 1fr) var(
+      --cdx-stw-inspector-width
+    );
+  grid-template-areas: "navigator stage inspector";
+}
+
+.cdx-stw-editor-navigator,
+.cdx-stw-editor-panel {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 20px;
+  background: #fff;
+}
+
+.cdx-stw-editor-navigator {
+  grid-area: navigator;
+  border-right: 1px solid #d5dfeb;
+  background: #f8fafc;
+}
+
+.cdx-stw-editor-panel {
+  grid-area: inspector;
+  border-left: 1px solid #d5dfeb;
+}
+
+.cdx-stw-editor-empty {
+  padding: 18px;
+  border: 1px dashed #c3c4c7;
+  border-radius: 6px;
+  color: #646970;
+}
+
+.cdx-stw-editor-controls section {
+  margin: 0 0 22px;
+  padding: 0 0 20px;
+  border-bottom: 1px solid #dcdcde;
+}
+
+.cdx-stw-editor-controls h2 {
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+
+.cdx-stw-editor-controls label {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 12px;
+}
+
+.cdx-stw-editor-controls label[hidden] {
+  display: none;
+}
+
+.cdx-stw-editor-controls input[type="text"],
+.cdx-stw-editor-controls input[type="url"],
+.cdx-stw-editor-controls select,
+.cdx-stw-editor-controls textarea {
+  width: 100%;
+}
+
+.cdx-stw-editor-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.cdx-stw-editor-two-col input[type="color"] {
+  width: 100%;
+  min-height: 38px;
+}
+
+.cdx-stw-editor-stage {
+  grid-area: stage;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 22px;
+  background: #e9eef5;
+}
+
+.cdx-stw-editor-frame-wrap {
+  width: 100%;
+  min-width: 320px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #c3c4c7;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  transition: width 0.18s ease;
+}
+
+.cdx-stw-editor-stage[data-viewport="tablet"] .cdx-stw-editor-frame-wrap {
+  width: 768px;
+}
+
+.cdx-stw-editor-stage[data-viewport="mobile"] .cdx-stw-editor-frame-wrap {
+  width: 390px;
+}
+
+.cdx-stw-editor-frame-wrap iframe {
+  display: block;
+  width: 100%;
+  height: calc(100dvh - 205px);
+  min-height: 380px;
+  border: 0;
+  background: #fff;
+}
+
+@media (max-width: 1100px) {
+  .cdx-stw-editor-shell {
+    --cdx-stw-nav-width: 215px;
+    --cdx-stw-inspector-width: 280px;
+  }
+
+  .cdx-stw-editor-topbar {
+    gap: 12px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 980px) {
+  .cdx-stw-editor-workspace {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "stage";
+  }
+
+  .cdx-stw-editor-navigator,
+  .cdx-stw-editor-panel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 5;
+    width: min(320px, 88vw);
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.18);
+  }
+
+  .cdx-stw-editor-navigator {
+    left: 0;
+  }
+
+  .cdx-stw-editor-panel {
+    right: 0;
+  }
+
+  .cdx-stw-editor-stage {
+    padding: 14px;
+  }
+
+  .cdx-stw-editor-brand {
+    min-width: 125px;
+  }
+}
+
+.cdx-stw-editor-panel-heading {
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #dbe4ef;
+}
+
+.cdx-stw-editor-panel-heading > span {
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.cdx-stw-editor-panel-heading h2 {
+  margin: 2px 0 0;
+  color: #0f172a;
+  font-size: 19px;
+  font-weight: 650;
+}
+
+.cdx-stw-editor-current-selection {
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+  border: 1px solid #dce6f2;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cdx-stw-editor-current-selection small {
+  color: #64748b;
+}
+
+.cdx-stw-editor-current-selection code {
+  overflow-wrap: anywhere;
+  color: #1e3a5f;
+  background: transparent;
+}
+
+.cdx-stw-editor-panel-hint {
+  margin-top: 16px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.cdx-stw-editor-stage-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 14px;
+  color: #334155;
+}
+
+.cdx-stw-editor-stage-heading strong {
+  font-size: 14px;
+}
+
+.cdx-stw-editor-stage-heading span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.cdx-stw-editor-controls input,
+.cdx-stw-editor-controls select,
+.cdx-stw-editor-controls textarea {
+  border-color: #cbd5e1;
+  border-radius: 6px;
+}
+
+.cdx-stw-editor-controls input:focus-visible,
+.cdx-stw-editor-controls select:focus-visible,
+.cdx-stw-editor-controls textarea:focus-visible,
+.cdx-stw-editor-shell button:focus-visible,
+.cdx-stw-editor-shell a:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* Step 14 — context-aware Inspector */
+.cdx-stw-inspector-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.cdx-stw-inspector-selection strong {
+  color: #1e293b;
+  font-size: 13px;
+}
+
+.cdx-stw-inspector-selection small {
+  color: #64748b;
+  font-size: 11px;
+}
+
+.cdx-stw-inspector-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+  width: 100%;
+  margin: 0 0 16px;
+  padding: 0 0 10px;
+  border-bottom: 1px solid #e2e8f0;
+  overflow: visible;
+}
+
+.cdx-stw-inspector-tabs button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  padding: 7px 4px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.cdx-stw-inspector-tabs button:hover:not(:disabled) {
+  background: #edf3fc;
+}
+
+.cdx-stw-inspector-tabs button[aria-pressed="true"] {
+  border-color: #93c5fd;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.cdx-stw-inspector-tabs button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.cdx-stw-editor-controls [data-cdx-inspector-panel][hidden],
+.cdx-stw-editor-controls [data-cdx-field][hidden],
+.cdx-stw-editor-controls [data-cdx-nested-text-warning][hidden] {
+  display: none !important;
+}
+
+.cdx-stw-inspector-note {
+  margin: 10px 0;
+  padding: 12px;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.cdx-stw-inspector-meta {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: 8px;
+  margin: 12px 0;
+  font-size: 12px;
+}
+
+.cdx-stw-inspector-meta dt {
+  color: #64748b;
+}
+.cdx-stw-inspector-meta dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.cdx-stw-inspector-meta code {
+  overflow-wrap: anywhere;
+}
+
+/* Step 18 — safe inline text-segment editing (no HTML string editing). */
+.cdx-stw-richtext {
+  margin: 12px 0;
+  padding: 10px;
+  background: #f8fafc;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+}
+.cdx-stw-richtext[hidden] {
+  display: none !important;
+}
+.cdx-stw-richtext h3 {
+  margin: 0 0 8px;
+  font-size: 13px;
+}
+.cdx-stw-richtext [data-cdx-richtext-fields] {
+  display: grid;
+  gap: 9px;
+  margin-top: 12px;
+}
+.cdx-stw-richtext label {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  font-size: 12px;
+}
+.cdx-stw-richtext textarea {
+  width: 100%;
+  min-height: 52px;
+  resize: vertical;
+  overflow-wrap: anywhere;
+}
+.cdx-stw-richtext-feedback {
+  margin: 7px 0 0;
+  font-size: 11px;
+  color: #475569;
+}
+
+/* Step 17B — additional dynamic card-field mappings. */
+
+.cdx-stw-grid-extra-mapping {
+  margin: 12px 0;
+  padding: 10px;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cdx-stw-grid-extra-mapping [data-cdx-grid-extra-rows] {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.cdx-stw-grid-extra-mapping .cdx-stw-grid-extra-row {
+  display: grid;
+  gap: 6px;
+  padding: 9px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.cdx-stw-grid-extra-mapping .cdx-stw-grid-extra-row label {
+  margin: 0;
+}
+
+.cdx-stw-grid-extra-mapping .cdx-stw-grid-remove {
+  justify-self: end;
+  width: auto;
+}
+
+/* Step 17 — post-import dynamic grids; keeps three Inspector tabs. */
+.cdx-stw-manual-grid {
+  margin: 14px 0 20px;
+  padding: 12px;
+  border: 1px solid #dbe4ef;
+  border-radius: 9px;
+  background: #f8fafc;
+}
+.cdx-stw-manual-grid[hidden],
+.cdx-stw-manual-grid [hidden] {
+  display: none !important;
+}
+.cdx-stw-manual-grid [data-cdx-grid-details] {
+  display: grid;
+  gap: 9px;
+  margin-top: 12px;
+}
+.cdx-stw-manual-grid h3 {
+  margin: 10px 0 4px;
+  font-size: 12px;
+  color: #334155;
+}
+.cdx-stw-manual-grid .button {
+  width: 100%;
+  min-height: 34px;
+  white-space: normal;
+}
+.cdx-stw-manual-grid label {
+  min-width: 0;
+}
+.cdx-stw-manual-grid select,
+.cdx-stw-manual-grid input[type="text"],
+.cdx-stw-manual-grid input[type="number"] {
+  width: 100%;
+  min-width: 0;
+}
+.cdx-stw-manual-grid label.cdx-stw-grid-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cdx-stw-manual-grid label.cdx-stw-grid-check input {
+  width: auto;
+}
+.cdx-stw-grid-badge {
+  margin-left: auto;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+/* Step 19B — scoped coloring with explicit solid-background handling. */
+.cdx-stw-style-scope {
+  margin: 0 0 14px;
+  padding: 10px;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+.cdx-stw-style-scope label {
+  display: grid;
+  gap: 5px;
+  margin: 0 0 9px;
+  font-size: 12px;
+}
+.cdx-stw-style-scope select {
+  width: 100%;
+  min-width: 0;
+}
+.cdx-stw-style-scope [hidden] {
+  display: none !important;
+}
+.cdx-stw-style-scope p {
+  margin: 4px 0 10px;
+  color: #475569;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.cdx-stw-style-scope .cdx-stw-style-solid {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+}
+.cdx-stw-style-scope .cdx-stw-style-solid input {
+  flex: 0 0 auto;
+  width: auto;
+  margin: 3px 0 0;
+}
+
+/* Step 19 — constrained sibling structure and responsive visibility. */
+.cdx-stw-structure {
+  margin: 14px 0 20px;
+  padding: 12px;
+  border: 1px solid #dbe4ef;
+  border-radius: 9px;
+  background: #f8fafc;
+}
+.cdx-stw-structure[hidden],
+.cdx-stw-structure [hidden] {
+  display: none !important;
+}
+.cdx-stw-structure h2 {
+  margin: 0 0 9px;
+  font-size: 14px;
+}
+.cdx-stw-structure-moves {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+.cdx-stw-structure-moves .button {
+  flex: 1 1 110px;
+  min-height: 34px;
+  white-space: normal;
+}
+.cdx-stw-structure-visibility {
+  border: 1px solid #dbe4ef;
+  border-radius: 7px;
+  padding: 8px 10px;
+}
+.cdx-stw-structure-visibility legend {
+  padding: 0 5px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.cdx-stw-structure-visibility label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 5px 0;
+  font-size: 12px;
+}
+.cdx-stw-structure-visibility input {
+  width: auto;
+  margin: 0;
+}
+.cdx-stw-layer-select[draggable="true"] {
+  cursor: grab;
+}
+.cdx-stw-layer-select.is-cdx-dragging {
+  opacity: 0.5;
+}
+.cdx-stw-layer-select.is-cdx-drop-target {
+  outline: 2px dashed #2563eb;
+  outline-offset: -2px;
+}
+
+/* Step 16 — manual Site Part assignment. */
+
+.cdx-stw-manual-sitepart {
+  margin: 14px 0 20px;
+  padding: 12px;
+  border: 1px solid #dbe4ef;
+  border-radius: 9px;
+  background: #f8fafc;
+}
+
+.cdx-stw-manual-sitepart[hidden],
+.cdx-stw-manual-sitepart [hidden] {
+  display: none !important;
+}
+
+.cdx-stw-manual-sitepart h2 {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.cdx-stw-manual-sitepart [data-cdx-part-details] {
+  display: grid;
+  gap: 9px;
+  margin-top: 12px;
+}
+
+.cdx-stw-manual-sitepart .button {
+  width: 100%;
+  min-height: 34px;
+  white-space: normal;
+}
+
+.cdx-stw-manual-sitepart select,
+.cdx-stw-manual-sitepart input {
+  width: 100%;
+  min-width: 0;
+}
+
+.cdx-stw-sitepart-badge {
+  margin-left: auto;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 9px;
+}
+
+/* Step 15 — manual Navigation assignment inside the three-tab Inspector. */
+.cdx-stw-manual-navigation {
+  margin: 14px 0 20px;
+  padding: 12px;
+  border: 1px solid #dbe4ef;
+  border-radius: 9px;
+  background: #f8fafc;
+}
+.cdx-stw-manual-navigation[hidden],
+.cdx-stw-manual-navigation [hidden] {
+  display: none !important;
+}
+.cdx-stw-manual-navigation h2 {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+.cdx-stw-manual-navigation [data-cdx-nav-details] {
+  display: grid;
+  gap: 9px;
+  margin-top: 12px;
+}
+.cdx-stw-manual-navigation .button {
+  width: 100%;
+  min-height: 34px;
+  white-space: normal;
+}
+.cdx-stw-nav-connect-label {
+  display: grid;
+  gap: 5px;
+  color: #334155;
+  font-size: 12px;
+}
+.cdx-stw-nav-connect-label select {
+  width: 100%;
+  min-width: 0;
+}
+.cdx-stw-manual-navigation [data-cdx-nav-manage] {
+  color: #1d4ed8;
+  text-decoration: underline;
+  font-size: 12px;
+}
+.cdx-stw-nav-feedback {
+  margin: 9px 0 0;
+  font-size: 12px;
+  color: #475569;
+  overflow-wrap: anywhere;
+}
+
+/* Step 19A — Smart Outline / native WordPress jQuery UI Sortable */
+.cdx-stw-layer-view-toggle {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+  margin: 12px 0;
+}
+.cdx-stw-layer-view-toggle button {
+  min-width: 0;
+  padding: 7px 4px;
+  border: 1px solid #d7e2f0;
+  border-radius: 6px;
+  background: #fff;
+  color: #475569;
+  cursor: pointer;
+  font-size: 11px;
+}
+.cdx-stw-layer-view-toggle button[aria-pressed="true"] {
+  background: #dbeafe;
+  color: #1d4ed8;
+  border-color: #93c5fd;
+  font-weight: 650;
+}
+/* The depth hint stops at four levels instead of sacrificing the label width. */
+.cdx-stw-layer-tree,
+.cdx-stw-layer-children {
+  max-width: 100%;
+  min-width: 0;
+}
+.cdx-stw-layer-tree li {
+  min-width: 0;
+}
+.cdx-stw-layer-children {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  border-left: 0 !important;
+}
+.cdx-stw-layer-row {
+  width: 100%;
+  min-width: 0;
+}
+.cdx-stw-layer-select {
+  min-width: 0;
+  overflow: hidden;
+}
+.cdx-stw-layer-label {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.cdx-stw-layer-drag-handle {
+  flex: 0 0 19px;
+  width: 19px;
+  height: 26px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: #64748b;
+  cursor: grab;
+  font-size: 17px;
+  line-height: 1;
+  touch-action: none;
+}
+.cdx-stw-layer-drag-handle:active {
+  cursor: grabbing;
+}
+.cdx-stw-layer-drag-handle[hidden] {
+  display: none !important;
+}
+.cdx-stw-layer-drag-handle:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+.cdx-stw-layer-tree .ui-sortable-helper {
+  background: #fff;
+  box-shadow: 0 7px 18px rgba(30, 64, 175, 0.16);
+  border-radius: 7px;
+}
+.cdx-stw-sortable-placeholder {
+  min-height: 34px;
+  border: 2px dashed #60a5fa;
+  border-radius: 6px;
+  background: #eff6ff;
+  margin: 2px 0;
+}
+.cdx-stw-editor-navigator {
+  overflow-x: hidden;
+}
+.cdx-stw-layer-breadcrumbs {
+  max-height: 62px;
+  overflow: auto;
+}
+@media (pointer: coarse) {
+  .cdx-stw-layer-drag-handle {
+    min-width: 30px;
+    min-height: 34px;
+  }
+}
+
+/* Step 13 — hierarchical Layers Navigator */
+
+.cdx-stw-layer-search {
+  display: block;
+  margin: 14px 0 10px !important;
+}
+
+.cdx-stw-layer-search input {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 7px;
+}
+
+.cdx-stw-layer-summary {
+  margin: 8px 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.cdx-stw-layer-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 10px;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.cdx-stw-layer-breadcrumbs button {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 0;
+  padding: 2px;
+  background: transparent;
+  color: #2563eb;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.cdx-stw-layer-tree,
+.cdx-stw-layer-children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cdx-stw-layer-tree li {
+  margin: 0;
+  padding: 0;
+}
+
+.cdx-stw-layer-tree li[hidden],
+.cdx-stw-layer-children[hidden],
+.cdx-stw-layer-expand[hidden] {
+  display: none !important;
+}
+
+.cdx-stw-layer-children {
+  margin-left: 12px;
+  padding-left: 7px;
+  border-left: 1px solid #dbe4ef;
+}
+
+.cdx-stw-layer-row {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 2px;
+}
+
+.cdx-stw-layer-expand {
+  flex: 0 0 18px;
+  height: 27px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.cdx-stw-layer-expand:hover {
+  color: #2563eb;
+}
+
+.cdx-stw-layer-select {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  min-height: 30px;
+  padding: 3px 5px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: #334155;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cdx-stw-layer-select:hover {
+  background: #eaf1fc;
+}
+
+.cdx-stw-layer-select[aria-current="true"] {
+  background: #dbeafe;
+  border-color: #93c5fd;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.cdx-stw-layer-tag {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  color: #64748b;
+}
+
+.cdx-stw-layer-label {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+.cdx-stw-layer-badge {
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 9px;
+}
+
+/* Step 12 refinement — compact accessible toolbar. */
+
+.cdx-stw-editor-actions .cdx-stw-editor-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  padding: 0;
+  line-height: 1;
+}
+
+.cdx-stw-editor-icon {
+  display: block;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.cdx-stw-editor-actions [data-cdx-editor-action="save"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+}
+
+.cdx-stw-editor-actions .cdx-stw-editor-viewports {
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid #465773;
+  border-radius: 8px;
+}
+
+.cdx-stw-editor-actions .cdx-stw-editor-icon-button[aria-pressed="true"],
+.cdx-stw-editor-actions .cdx-stw-editor-icon-button[aria-expanded="true"] {
+  color: #fff;
+  border-color: #7baef7;
+  background: #344b6a;
+}
+
+/* Step 12 — logical device canvases, zoom and refined Inspector controls. */
+
+.cdx-stw-editor-zoom {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid #465773;
+  border-radius: 8px;
+}
+
+.cdx-stw-editor-zoom output {
+  min-width: 42px;
+  padding: 0 4px;
+  color: #f8fafc;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.cdx-stw-editor-zoom .button {
+  min-width: 32px;
+  min-height: 30px;
+  padding: 0 7px;
+}
+
+.cdx-stw-editor-canvas {
+  position: relative;
+  margin: 0 auto;
+}
+
+.cdx-stw-editor-canvas .cdx-stw-editor-frame-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 0;
+  margin: 0;
+  transform-origin: top left;
+  transition: none;
+}
+
+.cdx-stw-editor-canvas .cdx-stw-editor-frame-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 900px;
+}
+
+/* Color controls */
+
+.cdx-stw-editor-color-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.cdx-stw-editor-field-title {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.cdx-stw-editor-color-control {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  padding: 5px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.cdx-stw-editor-color-control:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.12);
+}
+
+.cdx-stw-editor-color-swatch {
+  position: relative;
+  display: block !important;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  margin: 0 !important;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.cdx-stw-editor-color-swatch input[type="color"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.cdx-stw-editor-color-control .cdx-stw-editor-color-hex {
+  width: 100%;
+  min-width: 0;
+  padding: 4px 2px;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  color: #334155;
+  font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.cdx-stw-editor-color-control .cdx-stw-editor-color-hex:focus {
+  border: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+/* Media selection cards */
+
+.cdx-stw-editor-media-card {
+  display: flex;
+  gap: 12px;
+  margin: 0 0 14px;
+  padding: 12px;
+  border: 1px solid #dbe4ef;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.cdx-stw-editor-media-card[hidden],
+.cdx-stw-editor-media-thumb [hidden] {
+  display: none !important;
+}
+
+.cdx-stw-editor-media-thumb {
+  display: flex;
+  flex: 0 0 72px;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  overflow: hidden;
+  border: 1px solid #dbe4ef;
+  border-radius: 8px;
+  background: #eaf1fa;
+  color: #64748b;
+}
+
+.cdx-stw-editor-media-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cdx-stw-editor-media-thumb .dashicons {
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+}
+
+.cdx-stw-editor-media-content {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.cdx-stw-editor-media-content strong {
+  font-size: 13px;
+  color: #1e293b;
+}
+
+.cdx-stw-editor-media-content small {
+  font-size: 11px;
+  line-height: 1.4;
+  color: #64748b;
+}
+
+.cdx-stw-editor-media-button {
+  margin-top: auto !important;
+  border-color: #93c5fd !important;
+  border-radius: 6px !important;
+  background: #eff6ff !important;
+  color: #1d4ed8 !important;
+  font-weight: 600 !important;
+}
+
+.cdx-stw-editor-media-button:hover,
+.cdx-stw-editor-media-button:focus-visible {
+  background: #dbeafe !important;
+  border-color: #60a5fa !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cdx-stw-editor-frame-wrap {
+    transition: none;
+  }
+}
+
+/* Upgrade 1 — floating Navigator and compact responsive switches. */
+
+.cdx-stw-editor-shell {
+  --cdx-stw-nav-width: 0px;
+}
+
+.cdx-stw-editor-shell .cdx-stw-editor-workspace {
+  grid-template-columns: minmax(0, 1fr) var(--cdx-stw-inspector-width);
+  grid-template-areas: "stage inspector";
+}
+
+.cdx-stw-editor-shell .cdx-stw-editor-navigator {
+  position: fixed;
+  top: 92px;
+  left: 16px;
+  right: auto;
+  bottom: auto;
+  width: min(352px, calc(100vw - 32px));
+  max-height: calc(100dvh - 110px);
+  z-index: 110;
+  padding: 15px;
+  overflow: auto;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  background: #f8fafc;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.22);
+  overscroll-behavior: contain;
+}
+
+.cdx-stw-editor-shell.is-navigator-collapsed .cdx-stw-editor-navigator {
+  display: none !important;
+}
+
+.cdx-stw-navigator-handle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  cursor: move;
+  user-select: none;
+  touch-action: none;
+  padding: 2px 0 12px;
+  margin-bottom: 12px;
+}
+
+.cdx-stw-editor-navigator.is-dragging .cdx-stw-navigator-handle {
+  cursor: grabbing;
+}
+
+.cdx-stw-navigator-handle:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 4px;
+}
+
+.cdx-stw-navigator-handle > div > span {
+  color: #64748b;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.cdx-stw-navigator-handle h2 {
+  margin: 2px 0 0;
+  color: #0f172a;
+  font-size: 18px;
+}
+
+.cdx-stw-navigator-close {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #fff;
+  color: #334155;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.cdx-stw-navigator-close:hover {
+  background: #e2e8f0;
+}
+
+/* Compact, segmented responsive viewport control. */
+
+.cdx-stw-editor-topbar .cdx-stw-editor-viewports {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid #52647f;
+  border-radius: 999px;
+  background: #17253a;
+}
+
+.cdx-stw-editor-topbar .cdx-stw-editor-viewports .button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 34px;
+  min-height: 32px;
+  width: 34px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #cbd5e1;
+}
+
+.cdx-stw-editor-topbar .cdx-stw-editor-viewports .button[aria-pressed="true"] {
+  background: #3b82f6;
+  color: #fff;
+}
+
+/* Desktop / tablet / mobile visibility switches. */
+
+.cdx-stw-structure-visibility label {
+  position: relative;
+  cursor: pointer;
+}
+
+.cdx-stw-structure-visibility input[data-cdx-visible-on] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.cdx-stw-visibility-track {
+  position: relative;
+  flex: 0 0 33px;
+  width: 33px;
+  height: 19px;
+  border-radius: 999px;
+  background: #94a3b8;
+  transition: background 0.15s ease;
+}
+
+.cdx-stw-visibility-track::after {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  left: 3px;
+  top: 3px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.15s ease;
+}
+
+.cdx-stw-structure-visibility input:checked + .cdx-stw-visibility-track {
+  background: #2563eb;
+}
+
+.cdx-stw-structure-visibility input:checked + .cdx-stw-visibility-track::after {
+  transform: translateX(14px);
+}
+
+.cdx-stw-structure-visibility input:focus-visible + .cdx-stw-visibility-track {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+@media (max-width: 980px) {
+  .cdx-stw-editor-shell .cdx-stw-editor-workspace {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "stage";
+  }
+
+  .cdx-stw-editor-shell .cdx-stw-editor-navigator {
+    top: 82px;
+    max-height: calc(100dvh - 96px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cdx-stw-visibility-track,
+  .cdx-stw-visibility-track::after {
+    transition: none;
+  }
+}
+
+/* Condixia — resizable floating Navigator */
+
+.cdx-stw-editor-shell .cdx-stw-editor-navigator {
+  resize: both;
+  overflow: auto;
+
+  width: min(352px, calc(100vw - 24px));
+  height: min(68dvh, 640px);
+
+  min-width: min(260px, calc(100vw - 24px));
+  min-height: min(220px, calc(100dvh - 105px));
+
+  max-width: calc(100vw - 16px);
+  max-height: calc(100dvh - 105px);
+
+  scrollbar-width: thin;
+  scrollbar-color: #8294ae #eef3f9;
+  scrollbar-gutter: stable;
+}
+
+/* Chrome / Edge scrollbars */
+
+.cdx-stw-editor-shell .cdx-stw-editor-navigator::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.cdx-stw-editor-shell .cdx-stw-editor-navigator::-webkit-scrollbar-track {
+  background: #eef3f9;
+  border-radius: 8px;
+}
+
+.cdx-stw-editor-shell .cdx-stw-editor-navigator::-webkit-scrollbar-thumb {
+  background: #8294ae;
+  border: 2px solid #eef3f9;
+  border-radius: 8px;
+}
+
+.cdx-stw-editor-shell .cdx-stw-editor-navigator::-webkit-scrollbar-thumb:hover {
+  background: #516683;
+}
+
+/* Hide obsolete global visibility buttons */
+
+.cdx-stw-editor-shell [data-cdx-structure-hide],
+.cdx-stw-editor-shell [data-cdx-structure-show],
+.cdx-stw-editor-shell [data-cdx-structure-restore-visibility] {
+  display: none !important;
+}

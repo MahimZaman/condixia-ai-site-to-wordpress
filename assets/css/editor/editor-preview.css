@@ -1,0 +1,30 @@
+[data-cdx-id] {
+  cursor: pointer;
+}
+
+[data-cdx-id]:hover {
+  outline: 1px dashed #2563eb !important;
+  outline-offset: 2px !important;
+}
+
+[data-cdx-id].cdx-stw-editor-selected {
+  outline: 2px solid #2563eb !important;
+  outline-offset: 2px !important;
+}
+
+/* Overlay follows the exact DOM element bounding box while scrolling. */
+.cdx-stw-selection-overlay {
+  position: fixed !important;
+  pointer-events: none !important;
+  z-index: 2147483647 !important;
+  border: 2px solid #2563eb !important;
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.85),
+    inset 0 0 0 9999px rgba(37, 99, 235, 0.07) !important;
+  border-radius: 3px !important;
+  box-sizing: border-box !important;
+}
+
+.cdx-stw-selection-overlay[hidden] {
+  display: none !important;
+}
